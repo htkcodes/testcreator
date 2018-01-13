@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -9,17 +10,17 @@
 </head>
 <body>
     <div class="container">  
-        <form id="contact" action="" method="get">
+        <form id="contact" action="mailto:rkgetten@gmail.com" method="post">
           <h3>Kyke Contact Form</h3>
           <h4>Contact us for custom quote</h4>
           <fieldset>
-            <input placeholder="Your name" type="text" tabindex="1" required autofocus>
+            <input placeholder="Your name" type="text" tabindex="1" autofocus>
           </fieldset>
           <fieldset>
-            <input placeholder="Your Email Address" type="email" tabindex="2" required>
+            <input placeholder="Your Email Address" type="email" tabindex="2" >
           </fieldset>
           <fieldset>
-            <input placeholder="Your Phone Number (optional)" type="tel" tabindex="3" required>
+            <input placeholder="Your Phone Number (optional)" type="tel" tabindex="3">
           </fieldset>
           <fieldset>
             <input type="checkbox" name="vehicle" value="Bike">I have a bike<br>
@@ -30,13 +31,18 @@
             <input type="radio" name="gender" value="female"> Female<br>
           </fieldset>
           <fieldset>
-            <input placeholder="Your Web Site (optional)" type="url" tabindex="4" required>
+            <input placeholder="Your Web Site (optional)" type="url" tabindex="4" >
           </fieldset>
           <fieldset>
-            <textarea placeholder="Type your message here...." tabindex="5" required></textarea>
+            <textarea placeholder="Type your message here...." tabindex="5" ></textarea>
           </fieldset>
           <fieldset>
+              <fieldset>
+
+                    <input type="date">
+              </fieldset>
             <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+          
           </fieldset>
           <p class="copyright">Designed by <a href="https://colorlib.com" target="_blank" title="Colorlib">Colorlib</a></p>
         </form>
