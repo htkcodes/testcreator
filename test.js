@@ -1,10 +1,19 @@
 //Textbox
 if (!$.trim($("textarea").val())) {
-  console.log("empty");
+$("textarea").val("hmm");
 }
-let sList="";
+
+//checkbox
 $('input[type=checkbox]').each(function () {
-  
+    $(this).prop('checked',true);
+    console.log("checked");
+    $(this).prop('checked',false);
+    console.log("unchecked");
 });
 
-console.log(sList);
+$('input[type=radio]').each(function(){
+    $(this).prop('checked',true);
+    console.log("checked");
+    $(this).prop('checked',false);
+    console.log("unchecked");
+})
