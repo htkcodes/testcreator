@@ -3,27 +3,68 @@
 
 function checkTextArea()
 {
+    isWorking=false;
     if (!$.trim($("textarea").val())) {
         $("textarea").val("Lorem Ipsum");
-        return true;
+      isWorking=true;
         }
         else
-        return false;
+        isWorking=false;
+
+return isWorking;
 }
 
-console.log(checkTextArea());
 
 function checkTextBox()
 {
     let isWorking=false;
+    let failedRequired=[];
+    let pass=[];
     $('input[type=text]').each(function(){
-        if(!$.trim($(this).val())){
-            $(this).val("Lorem Ipsum");
+      
+       if($(this).prop('required'))
+       {
+        if(!$.trim($(this).val()))
+        {
+            failedRequired.push($(this).prop('name'));
+        }
+        else
+        {
+            pass.push($(this).prop('name'));
             isWorking=true;
+        }
+       
+       }
+       else{
+
+        if(!$.trim($(this).val())){
+            $(this).val('Lorem Ipsum');
+            $(this).val('');
+        pass.push($(this).prop('name'));
+           if(failedRequired.length===0)
+           {
+            isWorking=true;
+           }
+           else
+           isWorking=false;
         }
         else
         isWorking=false;
+       }
+
     });
+    //console.log(failedRequired);
+//console.log(pass);
+if(isWorking===false)
+{
+    for(i=0;i<failedRequired.length;i++)
+    {
+        $("input[name="+failedRequired[i]).css("background-color","yellow")
+    }
+  // $("input[name='First Name']").css("background-color","yellow");
+
+}
+else
 return isWorking;
 }
 
@@ -63,7 +104,6 @@ function checkCheckBox()
      return isWorking;
 }
 
-console.log(checkCheckBox());
 
 function checkRadioButtons(){
     let isWorking=false;
@@ -90,7 +130,6 @@ function checkRadioButtons(){
      return isWorking;
 }
 
-console.log(checkRadioButtons());
 
 function checkButtons()
 {
@@ -124,13 +163,13 @@ function checkDatePicker(){
     return isWorking;
 }
 
-console.log(checkDatePicker());
+
 
 
     function urlExists(){
         $.ajax({
           type: 'GET',
-          url: 'http://localhost/linkchecker.php?URL='+"http://gmail.com",
+          url: 'http://localhost/linkchecker.php',
           success: function(){
         console.log('here');
           },
@@ -141,13 +180,40 @@ console.log(checkDatePicker());
         });
       }
 
-console.log(urlExists());
+//console.log(urlExists());
 
+function UrlExists(url, cb){
+    jQuery.ajax({
+        url:      url,
+        dataType: 'text',
+        type:     'GET',
+        complete:  function(xhr){
+            if(typeof cb === 'function')
+               cb.apply(this, [xhr.status]);
+        }
+    });
+}
 
-
-
-
+UrlExists('http://localhost/index.php', function(status) {
+    if(status === 200) {
+     console.log('ok')
+    } else if(status === 404) {
+     console.log('boo')
+    }else{
+     console.log('nopee')
+    }
+});
 
 $("form").submit(function (e) {
     console.log("submitted")
 });
+
+function hasLinkChanged()
+{
+    let intialPage=window.location.href;
+
+    return intialPage;
+}
+
+console.log(hasLinkChanged());
+    
